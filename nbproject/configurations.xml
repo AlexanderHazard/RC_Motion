@@ -8,6 +8,8 @@
       <itemPath>IMU_reader.cpp</itemPath>
       <itemPath>MPU6050.cpp</itemPath>
       <itemPath>Serial.cpp</itemPath>
+      <itemPath>TcpServer.cpp</itemPath>
+      <itemPath>Telemetry.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="HeaderFiles"
@@ -19,6 +21,8 @@
       <itemPath>MPU6050_6Axis_MotionApps20.h</itemPath>
       <itemPath>MPU6050_9Axis_MotionApps41.h</itemPath>
       <itemPath>Serial.h</itemPath>
+      <itemPath>TcpServer.h</itemPath>
+      <itemPath>Telemetry.h</itemPath>
       <itemPath>helper_3dmath.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -47,7 +51,8 @@
       </toolsSet>
       <compileType>
         <ccTool>
-          <stripSymbols>true</stripSymbols>
+          <standard>8</standard>
+          <commandLine>-pthread</commandLine>
         </ccTool>
       </compileType>
       <item path="I2Cdev.cpp" ex="false" tool="1" flavor2="0">
@@ -69,6 +74,14 @@
       <item path="Serial.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Serial.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TcpServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TcpServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Telemetry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Telemetry.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="helper_3dmath.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -114,6 +127,14 @@
       <item path="Serial.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Serial.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="TcpServer.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="TcpServer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Telemetry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Telemetry.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="helper_3dmath.h" ex="false" tool="3" flavor2="0">
       </item>

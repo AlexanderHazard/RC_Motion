@@ -7,17 +7,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/MPU6050_6Axis_MotionApps20.h</file>
             <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/IMU_reader.cpp</file>
-            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/Serial.h</file>
-            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/MPU6050.cpp</file>
-            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/MPU6050.h</file>
             <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/main.cpp</file>
-            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/Makefile</file>
-            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/I2Cdev.cpp</file>
-            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/MPU6050_9Axis_MotionApps41.h</file>
+            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/Telemetry.h</file>
+            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/Telemetry.cpp</file>
+            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/TcpServer.h</file>
             <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/IMU_reader.h</file>
             <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/Serial.cpp</file>
+            <file>file:/D:/desctop/c++/gnu_virt/Virt2Real/TcpServer.cpp</file>
         </group>
     </open-files>
 </project-private>

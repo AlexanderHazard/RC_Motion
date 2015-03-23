@@ -242,22 +242,22 @@ void IMU_reader::run_read()
 
 void IMU_reader::setDataIMU(float* data)
 {
-   //mpu_MUTEX.lock(); 
+   mpu_MUTEX.lock(); 
     cYaw = data[0] * 180/M_PI;
     cPitch = data[1] * 180/M_PI;
     cRoll = data[2] * 180/M_PI;
     
-    printf("ypr  x = %2d, y =  %2d, z =  %2d\n", cYaw, cPitch, cRoll);
-   //mpu_MUTEX.unlock(); 
+    //printf("ypr  x = %2d, y =  %2d, z =  %2d\n", cYaw, cPitch, cRoll);
+   mpu_MUTEX.unlock(); 
 }
 
-void IMU_reader::getDataIMU(int *yaw, int *pitch, int *roll)
+void IMU_reader::getDataIMU(int *ypr)
 {
-    //mpu_MUTEX.lock();
-     *yaw = cYaw;
-     *pitch = cPitch;
-     *roll = cRoll;
-    //mpu_MUTEX.unlock();
+    mpu_MUTEX.lock();
+     ypr[0] = cYaw;
+     ypr[1] = cPitch;
+     ypr[2] = cRoll;
+    mpu_MUTEX.unlock();
 }
 
 void IMU_reader::read_cycle()
@@ -266,7 +266,7 @@ void IMU_reader::read_cycle()
     usleep(100000);
     while(imu_reader_run)
     { run_read();
-    //usleep(5000);
+      usleep(5000);
     }
     
 }

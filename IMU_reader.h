@@ -9,7 +9,7 @@
 #define	IMU_READER_H
 
 
-//#include <mutex>
+#include <mutex>
 
 using namespace std;
 
@@ -24,11 +24,11 @@ private:
     void setDataIMU(float*);
 public:
     void read_cycle(void);
-    void getDataIMU(int*, int*, int*);//get IMU data
+    void getDataIMU(int*);//get IMU data
     
 private:
     static int cYaw, cPitch, cRoll;
-   // mutex mpu_MUTEX;
+    mutex mpu_MUTEX;
 
 };
 

@@ -39,6 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/IMU_reader.o \
 	${OBJECTDIR}/MPU6050.o \
 	${OBJECTDIR}/Serial.o \
+	${OBJECTDIR}/TcpServer.o \
+	${OBJECTDIR}/Telemetry.o \
 	${OBJECTDIR}/main.o
 
 
@@ -85,6 +87,16 @@ ${OBJECTDIR}/Serial.o: Serial.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Serial.o Serial.cpp
+
+${OBJECTDIR}/TcpServer.o: TcpServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TcpServer.o TcpServer.cpp
+
+${OBJECTDIR}/Telemetry.o: Telemetry.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Telemetry.o Telemetry.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}

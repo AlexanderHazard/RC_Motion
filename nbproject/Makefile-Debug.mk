@@ -14,9 +14,9 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
-CCC=g++
-CXX=g++
+CC=arm-linux-gnueabihf-gcc-4.8
+CCC=arm-linux-gnueabihf-g++-4.8
+CXX=arm-linux-gnueabihf-g++-4.8
 FC=gfortran
 AS=as
 
@@ -39,6 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/IMU_reader.o \
 	${OBJECTDIR}/MPU6050.o \
 	${OBJECTDIR}/Serial.o \
+	${OBJECTDIR}/TcpServer.o \
+	${OBJECTDIR}/Telemetry.o \
 	${OBJECTDIR}/main.o
 
 
@@ -46,8 +48,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-pthread
+CXXFLAGS=-pthread
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -69,27 +71,37 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/virt2real: ${OBJECTFILES}
 ${OBJECTDIR}/I2Cdev.o: I2Cdev.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/I2Cdev.o I2Cdev.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/I2Cdev.o I2Cdev.cpp
 
 ${OBJECTDIR}/IMU_reader.o: IMU_reader.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IMU_reader.o IMU_reader.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/IMU_reader.o IMU_reader.cpp
 
 ${OBJECTDIR}/MPU6050.o: MPU6050.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPU6050.o MPU6050.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPU6050.o MPU6050.cpp
 
 ${OBJECTDIR}/Serial.o: Serial.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Serial.o Serial.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Serial.o Serial.cpp
+
+${OBJECTDIR}/TcpServer.o: TcpServer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/TcpServer.o TcpServer.cpp
+
+${OBJECTDIR}/Telemetry.o: Telemetry.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Telemetry.o Telemetry.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -s -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
 
 # Subprojects
 .build-subprojects:
