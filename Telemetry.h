@@ -13,10 +13,12 @@
 #include <string.h>
 #include <mutex>
 #include <netinet/in.h>
+#include "PWM_process.h"
 
 using namespace std;
 
-class Telemetry {
+class Telemetry : public PWM_process
+{
 public:
     Telemetry();
     Telemetry(const Telemetry& orig);
@@ -28,6 +30,17 @@ private:
     // FB - forward/back
     static int telRL, telFB;
     mutex tel_MUTEX;
+    
+    float PWM_QUIET = 0.152f;//percent of pwm, in which telemetry still
+    float PWM_RL= 0;//percent of right or left pwm value
+    float PWM_RL_STEPS = 15000.0f;//steps of RL_PWM shift
+    int WHEEL_DIADE_ZONE = 50;//diade zones defines
+    int L_MIN = -500, R_MAX = 500;//maximum values of right/left
+    
+    float PWM_FB_STEPS = 16667.0f;//steps of pwm shift
+    float PWM_FB = 0;//percent of forward or back pwm value
+    float FB_MAX = 500;//max value of forward back
+    
 
 };
 
