@@ -25,8 +25,9 @@ void Telemetry::setTelemetry(int* dataArr)
    if((telFB != ntohl(dataArr[1])))  
    {
        telFB = ntohl(dataArr[1]);
-       //telRL = ntohl(dataArr[1]);
-       //setPWM(1, 0.5);//write pwm value in class PWM_process
+       
+       PWM_FB = (telFB/PWM_FB_STEPS) + PWM_QUIET;
+         //setPWM(1, 0.5);//write pwm value in class PWM_process
    }
   
   if (telRL != ntohl(dataArr[0])) 
@@ -56,5 +57,5 @@ void Telemetry::setTelemetry(int* dataArr)
       PWM_RL = PWM_QUIET + PWM_RL;
    }
  tel_MUTEX.unlock();    
-    printf("FB = %d, RL = %d, PWM_RL = %f!\n", telFB, telRL, PWM_RL);
+    printf("FB = %d, RL = %d, PWM_FB = %f,  PWM_RL = %f!\n", telFB, telRL, PWM_FB, PWM_RL);
 }
