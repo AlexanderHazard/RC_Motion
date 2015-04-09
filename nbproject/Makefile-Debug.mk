@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/I2Cdev.o \
 	${OBJECTDIR}/IMU_reader.o \
 	${OBJECTDIR}/MPU6050.o \
+	${OBJECTDIR}/PWM_process.o \
 	${OBJECTDIR}/Serial.o \
 	${OBJECTDIR}/TcpServer.o \
 	${OBJECTDIR}/Telemetry.o \
@@ -82,6 +83,11 @@ ${OBJECTDIR}/MPU6050.o: MPU6050.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/MPU6050.o MPU6050.cpp
+
+${OBJECTDIR}/PWM_process.o: PWM_process.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -std=c++11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PWM_process.o PWM_process.cpp
 
 ${OBJECTDIR}/Serial.o: Serial.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -15,13 +15,13 @@ CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
 CND_PACKAGE_NAME_Debug=virt2real.tar
 CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/virt2real.tar
 # Release configuration
-CND_PLATFORM_Release=V2R-Windows
-CND_ARTIFACT_DIR_Release=dist/Release/V2R-Windows
+CND_PLATFORM_Release=GNU-Linux-x86
+CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
 CND_ARTIFACT_NAME_Release=virt2real
-CND_ARTIFACT_PATH_Release=dist/Release/V2R-Windows/virt2real
-CND_PACKAGE_DIR_Release=dist/Release/V2R-Windows/package
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/virt2real
+CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
 CND_PACKAGE_NAME_Release=virt2real.tar
-CND_PACKAGE_PATH_Release=dist/Release/V2R-Windows/package/virt2real.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/virt2real.tar
 #
 # include compiler specific variables
 #

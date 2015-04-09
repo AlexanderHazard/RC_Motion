@@ -28,6 +28,7 @@ public:
     virtual ~TcpServer();
     
     uint8_t create(int port);
+    bool isclosed(int sock);
     
     struct sockaddr_in serv_addr;
     struct sockaddr_in local_addr;
@@ -38,6 +39,7 @@ private:
     bool has_any_connect = false;
     ssize_t bytes_rec=0;
     int buffer[20];
+    int socket_activity = 0;
     //int inBuf[12];
     
     Telemetry *telData;

@@ -6,6 +6,7 @@
  */
 
 #include "TcpServer.h"
+#include <sys/ioctl.h>
 
 TcpServer::TcpServer() {
     telData = new Telemetry();
@@ -35,11 +36,8 @@ uint8_t TcpServer::create(int port)
         //set option SO_REUSEADDR
     //for reuse local address for bind
     setsockopt(listen_desc, SOL_SOCKET,  SO_REUSEADDR,  &so_reuseaddr, sizeof(so_reuseaddr));
-   /* timeval tv;
-    tv.tv_sec = 3000;
-    tv.tv_usec = 0;
-    setsockopt(listen_desc, SOL_SOCKET, SO_RCVTIMEO, (struct timeval *)&tv,sizeof(struct timeval));
-  */  
+    
+     fd_set rfds; //check for data in socket, install descriptor socket is set for read   
     //Initialize server address struct to 0 
     bzero((char*)&serv_addr, sizeof(serv_addr));
     
@@ -78,26 +76,60 @@ uint8_t TcpServer::create(int port)
              {
               close(listen_desc);
               perror("Accept error!\n");
+              buffer[0] = 0;
+              buffer[1] = 0;
+              telData->setTelemetry(buffer);
               return 4;
              }
+                         
+             /* FD_ZERO(&rfds);
+              FD_SET(accept_desc, &rfds);
+              socket_activity = select(accept_desc+1, &rfds, NULL, NULL, &tv);*/
             
           has_any_connect = true;
           }
         
+      //if(!isclosed(listen_desc))  
+      {
         if((bytes_rec = recv(accept_desc, buffer, 8, 0)) <= 0)
           {
             perror("Client missed!\n");
             has_any_connect = false;
+              buffer[0] = 0;
+              buffer[1] = 0;
+              telData->setTelemetry(buffer);
           }
         else 
         {
           telData->setTelemetry(buffer);//send to telemetry part 
           
           imuData->getDataIMU(buffer);
-          usleep(5000);
+          usleep(50000);
           send(accept_desc, buffer, 12, 0);
           printf("%d\n",buffer[0]);
         }
-               
+      }
+      /*else
+       {
+          printf("Missed client!\n");
+          buffer[0] = 0;
+          buffer[1] = 0;
+          telData->setTelemetry(buffer);
+       }*/
      }
 }
+
+bool TcpServer::isclosed(int sock)
+{
+fd_set rfd;
+  FD_ZERO(&rfd);
+  FD_SET(sock, &rfd);
+  timeval tv = { 1 };
+  select(sock+1, &rfd, 0, 0, &tv);
+  if (!FD_ISSET(sock, &rfd))
+    return false;
+  int n = 0;
+  ioctl(sock, FIONREAD, &n);
+  return n == 0;
+}
+
